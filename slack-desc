@@ -1,0 +1,13 @@
+libva: LibVA (Video Acceleration API for Linux)
+libva:
+libva: Video Acceleration API (VA API) is a library and API specification
+libva: which enables and provides access to graphics hardware (GPU)
+libva: acceleration for video processing on Linux and UNIX based operating
+libva: systems.  Accelerated processing includes video decoding, video
+libva: encoding, subpicture blending and rendering.  The specification was
+libva: originally designed by Intel for its GMA (Graphics Media Accelerator)
+libva: series of GPU hardware, the API is however not limited to GPUs or
+libva: Intel specific hardware, as other hardware and manufacturers can
+libva: also freely use this API for hardware accelerated video decoding.
+libva:
+libva: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
