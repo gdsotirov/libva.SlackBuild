@@ -19,7 +19,7 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: libva.SlackBuild,v 1.4 2012/09/22 12:29:53 gsotirov Exp $
+# $Id: libva.SlackBuild,v 1.5 2012/09/22 12:31:26 gsotirov Exp $
 #
 
 . ../../slack-package.conf
@@ -70,7 +70,7 @@ CXXFLAGS=$SLKCFLAGS \
             --enable-glx || exit 2
 
 # Build & install
-make -j4 || exit 3 
+make V=1 -j4 || exit 3 
 make DESTDIR=$PKG install || exit 3
 
 # Prepare
