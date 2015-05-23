@@ -19,13 +19,13 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: libva.SlackBuild,v 1.7 2015/05/17 06:57:53 gsotirov Exp $
+# $Id: libva.SlackBuild,v 1.8 2015/05/23 10:22:12 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=libva
-VERSION=1.2.1
+VERSION=1.3.1
 BUILD=${BUILD:-1}
 ARCH=${ARCH:-i486}
 
@@ -55,6 +55,11 @@ tar -xvf $CWD/$NAME-$VERSION.tar.?z* || exit 3
 cd $SRC
 fix_source
 
+# Overcome configuration error for missing WAYLAND_SCANNER
+# See http://archives.linuxfromscratch.org/mail-archives/lfs-dev/2014-May/069335.html
+mkdir m4
+autoreconf -f
+
 # Configure
 CFLAGS=$SLKCFLAGS \
 CXXFLAGS=$SLKCFLAGS \
@@ -65,13 +70,18 @@ CXXFLAGS=$SLKCFLAGS \
             --sysconfdir=/etc \
             --mandir=/usr/man \
             --localstatedir=/var \
+            --enable-docs \
+            --enable-drm=yes \
+            --enable-x11=yes \
+            --enable-glx=yes \
+            --enable-egl=yes \
+            --enable-wayland=no \
             --enable-shared=yes \
-            --enable-static=no \
-            --enable-glx || exit 4
+            --enable-static=no || exit 4
 
 # Build & install
 make V=1 -j4 || exit 5
-make DESTDIR=$PKG install || exit 6
+make V=1 DESTDIR=$PKG install || exit 6
 
 # Prepare
 bin_perms $PKG
