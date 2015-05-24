@@ -19,13 +19,13 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: libva.SlackBuild,v 1.8 2015/05/23 10:22:12 gsotirov Exp $
+# $Id: libva.SlackBuild,v 1.9 2015/05/24 08:52:37 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=libva
-VERSION=1.3.1
+VERSION=1.4.1
 BUILD=${BUILD:-1}
 ARCH=${ARCH:-i486}
 
@@ -58,9 +58,11 @@ fix_source
 # Overcome configuration error for missing WAYLAND_SCANNER
 # See http://archives.linuxfromscratch.org/mail-archives/lfs-dev/2014-May/069335.html
 mkdir m4
-autoreconf -f
+autoreconf -vif
 
 # Configure
+# Documents won't build:
+# - make exits with *** No rule to make target `va_footer.html', needed by `html-out/index.html'.
 CFLAGS=$SLKCFLAGS \
 CXXFLAGS=$SLKCFLAGS \
 ./configure --build=$ARCH-slackware-linux \
@@ -70,7 +72,8 @@ CXXFLAGS=$SLKCFLAGS \
             --sysconfdir=/etc \
             --mandir=/usr/man \
             --localstatedir=/var \
-            --enable-docs \
+            --with-drivers-path=/usr/lib${LIBDIRSUFFIX}/va/drivers \
+            --enable-docs=no \
             --enable-drm=yes \
             --enable-x11=yes \
             --enable-glx=yes \
