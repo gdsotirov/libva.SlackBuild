@@ -19,13 +19,13 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: libva.SlackBuild,v 1.9 2015/05/24 08:52:37 gsotirov Exp $
+# $Id: libva.SlackBuild,v 1.10 2015/05/24 16:02:38 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=libva
-VERSION=1.4.1
+VERSION=1.5.1
 BUILD=${BUILD:-1}
 ARCH=${ARCH:-i486}
 
