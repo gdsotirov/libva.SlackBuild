@@ -10,4 +10,4 @@ libva: series of GPU hardware, the API is however not limited to GPUs or
 libva: Intel specific hardware, as other hardware and manufacturers can
 libva: also freely use this API for hardware accelerated video decoding.
 libva:
-libva: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
+libva: Packaged by Georgi D. Sotirov <gdsotirov@gmail.com>
